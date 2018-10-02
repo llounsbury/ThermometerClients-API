@@ -1,0 +1,29 @@
+<div  [ngSwitch]="tempFormat">
+  <h2 *ngSwitchCase="0">   Current Temperature: {{temperature}}  ºC</h2>
+  <button *ngSwitchCase="0" class = "md-button" type="button" (click)="tempFormatChange()">ºF</button>
+  <h2 *ngSwitchCase="1">   Current Temperature: {{temperatureF}}  ºF</h2>
+  <button *ngSwitchCase="1" class = "md-button" type="button" (click)="tempFormatChange()">ºC</button>
+</div> <br>
+<div [ngSwitch]="LED">
+  <p>LED:
+  <button *ngSwitchCase="0" class = "md-button" type="button" (click)="update_led()">Enable</button>
+  <button *ngSwitchCase="1" class = "md-button" type="button" (click)="update_led()">Disable</button>
+  </p>
+</div> <br>
+<label>Min: {{min}}</label> <br>
+<input [value]="minInput" (input)="minInput=$event.target.value">
+<button class = "md-button" type="button" (click)="update_min()">update</button> <br>
+<label>Max: {{max}}</label> <br>
+<input [value]="maxInput" (input)="maxInput=$event.target.value">
+<button class = "md-button" type="button" (click)="update_max()">update</button>
+<br>
+<br>
+<p>Alert Number: {{cellNumber}} </p>
+<input [value]="cellNumberInput" (input)="cellNumberInput=$event.target.value">
+<button class = "md-button" type="button" (click)="updateCellNumber()">update</button>
+<p><label>Cell Provider: {{cellCarrier}}</label> <br></p>
+<label>Update Carrier:</label>
+<select (change)="updateCellCarrier($event.target.value)" >
+  <option>--Select One--</option>
+  <option *ngFor = "let carrier of carriers">{{carrier.name}}</option>
+</select>
